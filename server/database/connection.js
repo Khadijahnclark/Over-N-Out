@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import axios from "axios";
 
 const api_key = process.env.API_KEY ||'';
 
@@ -14,6 +15,8 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+let gameDocument = [];
 
 try {
     // Connect the client to the server
@@ -32,8 +35,7 @@ try {
   (async() =>{
     try{
       const gameData = db.collection('gamedata');
-      let gameDocument = [];
-  
+      
       const response = await axios.get(steam_app_url);
       const applists = response.data.applist.apps;
   
@@ -45,15 +47,15 @@ try {
           });
       }
   
-      if(gameDocument.length != 0 ){
+      if(gameDocument.length === 0 ){
         const p = await gameData.insertMany(gameDocument);
         console.log(`${p.insertedCount} documents were inserted`)
       }else{
-        console.log(`no documents to insert, skipping insertMany`)
+        console.log(`no documents to insert, skipping insert Many`)
       }
     } catch(err){
       console.log(err.message);
     }
   })();
-  
+
 export default db;
