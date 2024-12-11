@@ -1,14 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
-const Navbar=()=>{
-    return (    
-                <div className='navBar border border-blue-950'>
-                    <div className='HomePage'>
-                        <Link to="/">HomePage</Link>
-                    </div>
-                </div>
+const HomePage=()=>{
+    return (
+        <div className='bg-slate-900'>
+            <h1>HomePage</h1>
+        </div>
     )
-
 }
-export default Navbar;
+export default HomePage;
