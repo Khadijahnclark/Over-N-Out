@@ -1,14 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const Navbar=()=>{
-    return (    
-                <div className='navBar border border-blue-950'>
-                    <div className='HomePage'>
-                        <Link to="/">HomePage</Link>
-                    </div>
-                </div>
+    return (
+        <nav>
+            <ul>
+                <li>
+                    <NavLink to="/">Home</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Community">Community</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/NewsFeed">Game News</NavLink>
+                </li>
+            </ul>
+        </nav>
     )
-
 }
 export default Navbar;
